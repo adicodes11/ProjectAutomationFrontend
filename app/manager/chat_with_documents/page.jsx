@@ -91,7 +91,7 @@ export default function ChatWithDocuments() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          projectId: sessionStorage.getItem("projectId") || "dummyProjectId",
+          // Removed projectId so the backend generates a new one.
           userEmail: sessionStorage.getItem("email") || "anonymous@example.com",
           query,
           conversationId: null, // or some existing conversation ID
