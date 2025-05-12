@@ -10,7 +10,7 @@ import {
   getConversationMessages,
   markMessagesAsRead,
   getUnreadMessageCounts
-} from '@/models/ChatModels';
+} from '@/models/ChatModel';
 
 // Get conversations for a user
 export async function getConversationsHandler(req, res) {
