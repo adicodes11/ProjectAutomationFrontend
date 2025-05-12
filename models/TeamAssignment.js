@@ -1,4 +1,3 @@
-// models/TeamAssignment.js
 import mongoose from "mongoose";
 const { Schema, model, models, Types } = mongoose;
 
@@ -31,7 +30,7 @@ const teamAssignmentSchema = new Schema(
     tasks: [taskSchema],
     additionalInstructions: { type: String, default: "" },
   },
-  { timestamps: true }
+  { timestamps: true, collection: "teamAssignments" } // Added collection name explicitly
 );
 
 export default models.TeamAssignment || model("TeamAssignment", teamAssignmentSchema);

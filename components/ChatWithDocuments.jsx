@@ -45,7 +45,7 @@ export default function ChatWithDocuments() {
     formData.append("file", selectedFile);
 
     try {
-      const res = await fetch("http://localhost:8082/api/chat_with_documents", {
+      const res = await fetch("http://localhost:5000/chat_with_document", {
         method: "POST",
         body: formData,
       });

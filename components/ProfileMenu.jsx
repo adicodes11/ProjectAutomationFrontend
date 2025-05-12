@@ -8,6 +8,14 @@ const ProfileMenu = () => {
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const profileMenuRef = useRef(null);
   const router = useRouter();
+  const [userRole, setUserRole] = useState("member"); // default fallback
+
+  useEffect(() => {
+    const storedRole = sessionStorage.getItem("role");
+    if (storedRole) {
+      setUserRole(storedRole);
+    }
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -20,26 +28,28 @@ const ProfileMenu = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const basePath = `/${userRole}`;
+
   const menuItems = [
     { 
       icon: <RiDashboardLine className="w-5 h-5" />, 
       label: 'Dashboard', 
-      action: () => router.push('/dashboard')
+      action: () => router.push(`${basePath}/dashboard`)
     },
     { 
       icon: <CgProfile className="w-5 h-5" />, 
       label: 'My Profile', 
-      action: () => router.push('/profile')
+      action: () => router.push(`${basePath}/profile`)
     },
     {
       icon: <RiMessage2Line className="w-5 h-5" />,
       label: 'Chat',
-      action: () => router.push('/chat')
+      action: () => router.push(`${basePath}/chat`)
     },
     { 
       icon: <IoMdSettings className="w-5 h-5" />, 
       label: 'Settings', 
-      action: () => router.push('/settings')
+      action: () => router.push(`${basePath}/settings`)
     },
     { 
       icon: <RiLogoutBoxLine className="w-5 h-5" />, 

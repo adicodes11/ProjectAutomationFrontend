@@ -47,7 +47,7 @@ export default function Chatbot() {
 
     try {
       // Call the chatbot API
-      const res = await fetch("http://localhost:8081/api/chatbot", {
+      const res = await fetch("http://localhost:5000/chatbot", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

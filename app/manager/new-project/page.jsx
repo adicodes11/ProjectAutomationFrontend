@@ -152,7 +152,7 @@ export default function ProjectQuestionnaire() {
       const updatedPayload = { ...payload, _id: projectId };
 
       // 4. Now, send the updated payload to your Flask API for analysis.
-      const analysisResponse = await fetch("http://localhost:8080/api/analyze_project", {
+      const analysisResponse = await fetch("http://localhost:5000/analyze_project", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedPayload),

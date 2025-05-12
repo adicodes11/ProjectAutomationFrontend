@@ -15,26 +15,30 @@ export async function PUT(request) {
       );
     }
 
-    // Find the team assignment document using the email.
     const teamAssignment = await TeamAssignment.findOne({
       email: email.toLowerCase(),
     });
+
     if (!teamAssignment) {
-      return NextResponse.json({ message: "Team assignment not found" }, { status: 404 });
+      return NextResponse.json(
+        { message: "Team assignment not found" },
+        { status: 404 }
+      );
     }
 
-    // Locate the index of the task by matching the description field.
     const taskIndex = teamAssignment.tasks.findIndex(
-      (task) => task.description === taskDescription
+      (task) =>
+        task.description.toLowerCase() === taskDescription.toLowerCase()
     );
+
     if (taskIndex === -1) {
       return NextResponse.json({ message: "Task not found" }, { status: 404 });
     }
 
-    // Do not convert updatedTask.status to lowercase—use the exact enum value!
-    // Merge updated fields into the task.
     Object.entries(updatedTask).forEach(([key, value]) => {
-      teamAssignment.tasks[taskIndex][key] = value;
+      if (value !== undefined && value !== null) {
+        teamAssignment.tasks[taskIndex][key] = value;
+      }
     });
 
     await teamAssignment.save();

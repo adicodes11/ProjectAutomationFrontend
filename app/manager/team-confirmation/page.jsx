@@ -121,7 +121,7 @@ export default function TeamConfirmationPage() {
       }
 
       // Next, call the assignTasks API (Flask endpoint running on port 8083)
-      const assignResponse = await fetch("http://localhost:8083/api/assignTasks", {
+      const assignResponse = await fetch("http://localhost:5000/assign_tasks", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -137,7 +137,7 @@ export default function TeamConfirmationPage() {
       }
 
       // If both API calls are successful, redirect to the next step (e.g., automation dashboard)
-      router.push("/automation");
+      router.push("/manager/automating-task-assignment");
     } catch (err) {
       setError("An error occurred during confirmation.");
       setConfirming(false);
