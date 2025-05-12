@@ -48,7 +48,7 @@ export default function ChatWithDocuments() {
     formData.append("file", selectedFile);
 
     try {
-      const res = await fetch("http://localhost:5000/chat_with_documents", {
+      const res = await fetch("https://projectautomationflaskapi.onrender.com/chat_with_documents", {
         method: "POST",
         body: formData,
       });
@@ -100,7 +100,7 @@ export default function ChatWithDocuments() {
     setIsTyping(true);
 
     try {
-      const res = await fetch("http://localhost:5000/chat_with_documents", {
+      const res = await fetch("https://projectautomationflaskapi.onrender.com/chat_with_documents", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

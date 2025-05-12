@@ -121,7 +121,7 @@ export default function TeamConfirmationPage() {
       }
 
       // Next, call the assignTasks API (Flask endpoint running on port 8083)
-      const assignResponse = await fetch("http://localhost:5000/assign_tasks", {
+      const assignResponse = await fetch("https://projectautomationflaskapi.onrender.com/assign_tasks", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
